@@ -38,7 +38,7 @@ def clean_iris(df):
 
 
 
-def prep_titanic(df):
+def clean_titanic(df):
     '''
     This function will clean the titanic dataset
     '''
@@ -58,6 +58,9 @@ def clean_telco(df):
     
     #convert total charges to float
     df.total_charges = pd.to_numeric(df['total_charges'], errors='coerce')
+
+    # fill n/a values in total_charges
+    df.total_charges.fillna(0)
     
     # dropping columns
     df = df.drop(columns=['contract_type_id','internet_service_type_id','payment_type_id'])
